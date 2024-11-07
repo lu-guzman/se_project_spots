@@ -9,6 +9,7 @@
   width: 190px;
   margin-right: 20px;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .profile__column {
@@ -47,7 +48,7 @@
 }
 
 .profile__edit-btn {
-  margin: 0;
+  margin: auto 0;
   padding: 0;
   background-color: #fcf5e5;
   border: none;
@@ -58,9 +59,10 @@
   color: #212121;
   opacity: 70%;
   transition: opacity 0.5s;
+  cursor: pointer;
 }
 
-.profile__edit-btn_pencil-icon {
+.profile__edit-btn-pencil-icon {
   margin-right: 7.93px;
 }
 
@@ -76,9 +78,10 @@
   color: #fcf5e5;
   border-radius: 8px;
   transition: opacity 0.5s;
+  cursor: pointer;
 }
 
-.profile__add-btn_plus-icon {
+.profile__add-btn-plus-icon {
   margin-right: 7px;
 }
 
