@@ -26,3 +26,7 @@ This webpage is deployed to Github Pages.
 
 ![Desktop - Project Features](./images/demo/Desktop-view-spots.png)
 ![Mobile - Project Features](./images/demo/Mobile-view-spots.png)
+
+**Video Explaining Spots Project**
+
+- [Video Link](https://youtu.be/DTP925V7Ejk)
