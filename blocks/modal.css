@@ -33,8 +33,9 @@
   right: 50px;
   width: 40px;
   height: 40px;
-  background-image: url("../images/CloseBtnIcon.svg");
-  /* make background of image transparant */
+  background-image: url("../images/CloseBtnIcon.png");
+  background-repeat: no-repeat;
+  background-color: transparent;
   border: none;
   color: #fff;
   opacity: 40%;
@@ -64,7 +65,6 @@
   border-color: #212121;
   opacity: 40%;
   border-style: solid;
-  /* make sure border px are accurate */
 }
 
 .modal__input:hover {
