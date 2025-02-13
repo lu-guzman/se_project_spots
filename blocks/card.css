@@ -50,6 +50,7 @@
   padding: 0;
   transition: opacity 0.5s;
   cursor: pointer;
+  background-repeat: no-repeat;
 }
 
 .card__like-btn:hover {
