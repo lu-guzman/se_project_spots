@@ -79,10 +79,6 @@ function getCardElement(data) {
     previewModalCaptionEl.textContent = data.name;
   });
 
-  /* previewModalCloseBtn.addEventListener("click", () => {
-    closeModal(previewModal);
-  }); */
-
   cardDeleteBtn.addEventListener("click", () => {
     cardElement.remove();
   });
@@ -114,7 +110,7 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardList.prepend(cardElement);
   closeModal(cardModal);
-  evt.target.reset(cardModal);
+  evt.target.reset();
 }
 
 profileEditButton.addEventListener("click", () => {
