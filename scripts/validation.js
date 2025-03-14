@@ -22,7 +22,7 @@ const hideInputError = (formEl, inputEl, config) => {
 const checkInputValidity = (formEl, inputEl, config) => {
   console.log(formEl, inputEl);
   if (!inputEl.validity.valid) {
-    showInputError(formEl, inputEl, inputEl.validationMessage);
+    showInputError(formEl, inputEl, inputEl.validationMessage, config);
   } else {
     hideInputError(formEl, inputEl, config);
   }
@@ -66,8 +66,8 @@ const setEventListeners = (formEl, config) => {
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formEl, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      checkInputValidity(formEl, inputElement, config);
+      toggleButtonState(inputList, buttonElement, config);
     });
   });
 };
