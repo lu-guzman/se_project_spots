@@ -8,7 +8,6 @@ const settings = {
 };
 
 const showInputError = (formEl, inputEl, errorMsg, config) => {
-  console.log(inputEl);
   const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorMsgEl.textContent = errorMsg;
   inputEl.classList.add(config.inputErrorClass);
@@ -20,12 +19,12 @@ const hideInputError = (formEl, inputEl, config) => {
   inputEl.classList.remove(config.inputErrorClass);
 };
 
-const checkInputValidity = (formEl, inputEl) => {
+const checkInputValidity = (formEl, inputEl, config) => {
   console.log(formEl, inputEl);
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage);
   } else {
-    hideInputError(formEl, inputEl);
+    hideInputError(formEl, inputEl, config);
   }
 };
 
@@ -53,9 +52,9 @@ const enableButton = (buttonEl, config) => {
   buttonEl.classList.remove(config.inactiveButtonClass);
 };
 
-const resetValidation = (formEl, inputList) => {
+const resetValidation = (formEl, inputList, config) => {
   inputList.forEach((input) => {
-    hideInputError(formEl, input);
+    hideInputError(formEl, input, config);
   });
 };
 
