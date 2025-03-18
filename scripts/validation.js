@@ -1,5 +1,5 @@
 const settings = {
-  formSelector: ".modal__container",
+  formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-btn",
   inactiveButtonClass: "modal-submit-btn_disabled",
@@ -20,7 +20,6 @@ const hideInputError = (formEl, inputEl, config) => {
 };
 
 const checkInputValidity = (formEl, inputEl, config) => {
-  console.log(formEl, inputEl);
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage, config);
   } else {
