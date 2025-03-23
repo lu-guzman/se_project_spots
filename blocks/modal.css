@@ -36,11 +36,6 @@
   position: relative;
 }
 
-/*  .modal__container_type_preview {
-  padding: 0;
-  background-color: transparent;
-}  */
-
 .modal__image {
   width: 100%;
   object-fit: contain;
@@ -155,7 +150,7 @@
   opacity: 80%;
 }
 
-.modal-submit-btn_disabled {
+.modal__submit-btn_disabled {
   visibility: visible;
   opacity: 50%;
 }

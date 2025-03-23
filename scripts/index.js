@@ -95,7 +95,7 @@ function openModal(modal) {
 
 function closeModal(cardModal) {
   cardModal.classList.remove("modal_opened");
-  document.addEventListener("keyup", handleEscape);
+  document.removeEventListener("keyup", handleEscape);
 }
 
 function handleEscape(evt) {
@@ -116,6 +116,7 @@ modals.forEach((modal) => {
 });
 
 function handleEditFormSubmit(evt) {
+  console.log("event");
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
@@ -128,7 +129,7 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardList.prepend(cardElement);
   evt.target.reset();
-  disableButton(cardModalCloseBtn, settings);
+  disableButton(evt.submitter, settings);
   closeModal(cardModal);
 }
 
