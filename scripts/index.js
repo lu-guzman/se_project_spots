@@ -109,6 +109,7 @@ const modals = document.querySelectorAll(".modal");
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
+    console.log("Mouse down");
     if (evt.target.classList.contains("modal")) {
       closeModal(modal);
     }
@@ -120,6 +121,7 @@ function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
+  console.log(profileDescription);
   closeModal(editModal);
 }
 
