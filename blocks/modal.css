@@ -20,6 +20,7 @@
   visibility: visible;
   opacity: 1;
   transition-delay: 0s;
+  z-index: 10;
 }
 
 .modal__container {
