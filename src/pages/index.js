@@ -1,3 +1,6 @@
+import "./index.css";
+import { enableValidation, settings } from "../scripts/validation.js";
+
 const initialCards = [
   {
     name: "Val Thorens",
@@ -138,11 +141,6 @@ function handleAddCardSubmit(evt) {
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
-  // resetValidation(
-  //   editFormElement,
-  //   [editModalNameInput, editModalDescriptionInput],
-  //   settings
-  // );
 
   openModal(editModal);
 });
@@ -164,3 +162,5 @@ initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardList.prepend(cardElement);
 });
+
+enableValidation(settings);

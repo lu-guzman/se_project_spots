@@ -273,8 +273,6 @@ textarea {
 [type="radio"] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
-  accent-color: #1878dc;
-  background-image: url(../images/check.svg);
 }
 
 /**
