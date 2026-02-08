@@ -90,6 +90,15 @@ const previewModalCloseBtn = document.querySelector(
 const cardTemplate = document.querySelector("#card-template");
 const cardList = document.querySelector(".cards__list");
 
+const deleteConfirmationModal = document.querySelector("#delete-modal");
+const deleteConfirmationModalCancel = deleteConfirmationModal.querySelector(
+  "#delete-modal-cancel",
+);
+const deleteConfirmationModalCTA =
+  deleteConfirmationModal.querySelector("#delete-modal-cta");
+
+let deleteStorage = null;
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
@@ -116,8 +125,11 @@ function getCardElement(data) {
   });
 
   cardDeleteBtn.addEventListener("click", () => {
-    cardElement.remove();
+    // here you need to open the con firmation modal
+    deleteStorage = cardElement;
+    openModal(deleteConfirmationModal);
   });
+
   return cardElement;
 }
 previewModalCloseBtn.addEventListener("click", () => {
@@ -183,7 +195,7 @@ function handleAvatarSubmit(evt) {
   //TODO - prevent default behavior
   api
     .editAvatarInfo(avatarInput.value)
-    .then((data.avatar) => {})
+    .then((data) => {})
 
     // TODO - make this work
     .catch(console.error);
@@ -214,5 +226,16 @@ avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardFormElement.addEventListener("submit", handleAddCardSubmit);
+
+deleteConfirmationModalCancel.addEventListener("click", () => {
+  deleteStorage = null;
+  closeModal(deleteConfirmationModal);
+});
+
+deleteConfirmationModalCTA.addEventListener("click", () => {
+  deleteStorage.remove();
+  deleteStorage = null;
+  closeModal(deleteConfirmationModal);
+});
 
 enableValidation(settings);
