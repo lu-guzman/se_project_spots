@@ -97,7 +97,7 @@ const deleteConfirmationModalCancel = deleteConfirmationModal.querySelector(
 const deleteConfirmationModalCTA =
   deleteConfirmationModal.querySelector("#delete-modal-cta");
 
-let deleteStorage = null;
+let selectedCard, selectedCardId;
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -124,17 +124,34 @@ function getCardElement(data) {
     previewModalCaptionEl.textContent = data.name;
   });
 
-  cardDeleteBtn.addEventListener("click", () => {
-    // here you need to open the con firmation modal
-    deleteStorage = cardElement;
-    openModal(deleteConfirmationModal);
-  });
+  cardDeleteBtn.addEventListener("click", () =>
+    handleDeleteCard(cardElement, data),
+  );
 
   return cardElement;
 }
 previewModalCloseBtn.addEventListener("click", () => {
   closeModal(previewModal);
 });
+
+const handleDeleteCard = (cardElement, data) => {
+  selectedCard = cardElement;
+  selectedCardId = data._id;
+  openModal(deleteConfirmationModal);
+};
+
+const deleteCard = () => {
+  api
+    .deleteCard(selectedCardId)
+    .then(() => {
+      selectedCard.remove();
+      selectedCard = null;
+      closeModal(deleteConfirmationModal);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -186,7 +203,8 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardList.prepend(cardElement);
   evt.target.reset();
-  disableButton(evt.submitter, settings);
+  //disableButton(evt.submitter, settings);
+  api.postCard(cardData);
   closeModal(cardModal);
 }
 
@@ -233,8 +251,7 @@ deleteConfirmationModalCancel.addEventListener("click", () => {
 });
 
 deleteConfirmationModalCTA.addEventListener("click", () => {
-  deleteStorage.remove();
-  deleteStorage = null;
+  deleteCard();
   closeModal(deleteConfirmationModal);
 });
 
