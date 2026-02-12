@@ -41,12 +41,19 @@ const api = new Api({
 
 api
   .getAppInfo()
-  .then(([cards]) => {
+  .then(([cards, user]) => {
     console.log(cards);
     cards.forEach((item) => {
       const cardElement = getCardElement(item);
       cardList.append(cardElement);
     });
+
+    console.log(user);
+
+    // TODO: handle user <-----
+    profileName.textContent = user.name;
+    profileDescription.textContent = user.about;
+    // avatarModalBtn.src = user.avatar;
 
     //  Handle the user's information
     // - set src of the avatar image
@@ -199,13 +206,16 @@ function handleEditFormSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
-  const cardElement = getCardElement(inputValues);
-  cardList.prepend(cardElement);
-  evt.target.reset();
-  //disableButton(evt.submitter, settings);
-  api.postCard(cardData);
-  closeModal(cardModal);
+
+  api.postCard(inputValues).then((card) => {
+    const cardElement = getCardElement(card);
+    cardList.prepend(cardElement);
+
+    evt.target.reset();
+    closeModal(cardModal);
+  });
 }
 
 //TODO - finish avatar submission handler
