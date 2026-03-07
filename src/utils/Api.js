@@ -11,8 +11,6 @@ class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  // TODO - create another method, getUserInfo (different base url)
-
   getAppInfo() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
@@ -33,10 +31,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        name,
-        about,
-      }),
+      body: JSON.stringify({ name, about }),
     }).then(this._handleResponse);
   }
 
@@ -44,9 +39,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        avatar,
-      }),
+      body: JSON.stringify({ avatar }),
     }).then(this._handleResponse);
   }
 
@@ -64,11 +57,15 @@ class Api {
         ...this._headers,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name,
-        link,
-      }),
+      body: JSON.stringify({ name, link }),
     }).then(this._handleResponse);
+  }
+
+  changeLikeStatus({ id, isLiked }) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: isLiked ? "DELETE" : "PUT",
+      headers: this._headers,
+    }).then((res) => this._handleResponse(res));
   }
 }
 

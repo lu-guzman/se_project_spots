@@ -53,7 +53,7 @@ api
     // TODO: handle user <-----
     profileName.textContent = user.name;
     profileDescription.textContent = user.about;
-    // avatarModalBtn.src = user.avatar;
+    profileAvatarImage.src = user.avatar;
 
     //  Handle the user's information
     // - set src of the avatar image
@@ -86,6 +86,9 @@ const avatarForm = avatarModal.querySelector(".modal__form");
 const avatarSubmitBtn = avatarModal.querySelector(".modal__avatar-btn");
 const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
 const avatarInput = avatarModal.querySelector("#profile-avatar-input");
+
+const profileAvatar = document.querySelector("#profile-avatar");
+const profileAvatarImage = profileAvatar.querySelector(".profile__avatar");
 
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = document.querySelector(".modal__image");
@@ -256,7 +259,6 @@ editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardFormElement.addEventListener("submit", handleAddCardSubmit);
 
 deleteConfirmationModalCancel.addEventListener("click", () => {
-  deleteStorage = null;
   closeModal(deleteConfirmationModal);
 });
 
