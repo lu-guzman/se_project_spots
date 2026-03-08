@@ -27,7 +27,7 @@
 
 .modal__container {
   background-color: #fff;
-  padding: 32px 50px;
+  padding: 13px 50px;
   width: 630px;
   height: 172px;
   box-sizing: border-box;
@@ -48,6 +48,10 @@
   max-height: 80vh;
   border-radius: 8px;
   margin: 0;
+}
+
+.modal__container-edit_avatar {
+  text-align: left;
 }
 
 .modal__avatar-btn {
@@ -114,7 +118,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 32px;
+  margin-bottom: 22px;
   color: #212121;
   opacity: 70%;
   font-weight: 500;
@@ -154,7 +158,7 @@
   background-color: #212121;
   color: #fcf5e5;
   cursor: pointer;
-  margin: 10px;
+  margin: 10px 0;
 }
 
 .modal__submit-btn:hover {
@@ -163,7 +167,6 @@
 
 .modal__submit-btn_disabled {
   visibility: visible;
-  opacity: 50%;
 }
 
 #delete-modal-cta {
