@@ -123,8 +123,15 @@ function getCardElement(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
 
+  cardLikeBtn.classList.toggle("card__like-button_liked", data.isLiked);
+
   cardLikeBtn.addEventListener("click", () => {
-    cardLikeBtn.classList.toggle("card__like-button_liked");
+    const isLiked = cardLikeBtn.classList.contains("card__like-button_liked");
+    api.changeLikeStatus({ id: data._id, isLiked });
+    .then(() => {
+      cardLikeBtn.classList.toggle("card__like-button_liked");
+    })
+    .catch(console.error);
   });
 
   cardImage.addEventListener("click", () => {
