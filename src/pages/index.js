@@ -1,5 +1,6 @@
 import "./index.css";
 import { enableValidation, settings } from "../scripts/validation.js";
+import {setButtonText} from "../utils/helpers.js"
 import Api from "../utils/Api.js";
 
 //const initialCards = [
@@ -127,7 +128,7 @@ function getCardElement(data) {
 
   cardLikeBtn.addEventListener("click", () => {
     const isLiked = cardLikeBtn.classList.contains("card__like-button_liked");
-    api.changeLikeStatus({ id: data._id, isLiked });
+    api.changeLikeStatus({ id: data._id, isLiked })
     .then(() => {
       cardLikeBtn.classList.toggle("card__like-button_liked");
     })
@@ -219,12 +220,21 @@ function handleAddCardSubmit(evt) {
 
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
 
+  // change text content to "saving..."
+  const submitButton = evt.submitter;
+  // submitButton.textContent = "Saving...";
+  setButtonText(submitButton, true,);
+
   api.postCard(inputValues).then((card) => {
     const cardElement = getCardElement(card);
     cardList.prepend(cardElement);
 
     evt.target.reset();
     closeModal(cardModal);
+  })
+  .catch(console.error)
+  .finally(() => {
+   submitButton.textContent = "Save";
   });
 }
 
