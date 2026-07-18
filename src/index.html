@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,25 +6,33 @@
     <meta name="description" content="???" />
     <meta name="author" content="Lucero Brambila Guzman" />
     <meta name="keywords" content="HTML, CSS, ???" />
-
     <title>Spots</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
         <img
+          class="header__logo"
           src="<%=require('./images/logo.svg')%>"
           alt="Spots logo"
-          class="header__logo"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/avatar.jpg')%>"
-            alt="Bessie Coleman"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container" id="profile-avatar">
+            <button class="profile__avatar-btn">
+              <img
+                class="profile__pencil-icon"
+                src="<%=require('./images/pencil-light.svg')%>"
+                alt="Pencil icon"
+              />
+            </button>
+            <img
+              src="<%=require('./images/avatar.jpg')%>"
+              alt="Bessie Coleman"
+              class="profile__avatar"
+            />
+          </div>
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -64,7 +72,7 @@
       </footer>
 
       <div class="modal" id="edit-modal">
-        <div class="modal__container">
+        <div class="modal__container modal__container-edit_avatar">
           <button
             type="button"
             class="modal__close-btn modal__close-btn_inputs"
@@ -159,6 +167,46 @@
         ></button>
         <img class="modal__image" src="" alt="" />
         <p class="modal__caption"></p>
+      </div>
+    </div>
+
+    <div class="modal" id="avatar-modal">
+      <div class="modal__container modal__container-edit_avatar">
+        <button type="button" class="modal__avatar-btn"></button>
+        <h2 class="modal__title">Edit profile avatar</h2>
+        <form id="edit-avatar-form" class="modal__form" novalidate>
+          <label for="profile-avatar-input" class="modal__label">
+            Profile avatar
+            <input
+              id="profile-avatar-input"
+              class="modal__input"
+              placeholder="Paste a link to an image"
+              name="avatar"
+            />
+            <span id="profile-avatar-input-error" class="modal__error"></span>
+          </label>
+
+          <button type="submit" class="modal__submit-btn">Save</button>
+        </form>
+      </div>
+    </div>
+    <!-- TODO - style the modal-->
+    <div class="modal" id="delete-modal">
+      <div class="modal__container">
+        <button type="button" class="modal__avatar-btn"></button>
+        <h3 class="modal__title">
+          Are you sure you want to delete this image?
+        </h3>
+        <button type="button" class="modal__submit-btn" id="delete-modal-cta">
+          Delete
+        </button>
+        <button
+          type="button"
+          class="modal__submit-btn"
+          id="delete-modal-cancel"
+        >
+          Cancel
+        </button>
       </div>
     </div>
   </body>
