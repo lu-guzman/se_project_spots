@@ -234,7 +234,8 @@ function handleAddCardSubmit(evt) {
   })
   .catch(console.error)
   .finally(() => {
-   submitButton.textContent = "Save";
+    // TODO - call setButtonText to reset the button text
+    setButtonText(submitButton, false, "Save", "Saving...");
   });
 }
 

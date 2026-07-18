@@ -1,4 +1,4 @@
-export function setButtonText(btn, isLoading, defaultText, loadingText,) {
+export function setButtonText(btn, isLoading, defaultText = "Save", loadingText = "Saving...") {
     if (isLoading) {
 
     } else {
